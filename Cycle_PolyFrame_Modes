@@ -1,0 +1,27 @@
+//ZBrush macro - save to ZBrush 2019.1\ZStartup\Macros\Misc\ folder
+//Cristobal Vila - etereaestudios.com
+
+
+[IButton,???,"Cycle PolyFrame Modes",
+	[IShowActions,0]
+	[IConfig,2019]
+	[IPress,Transform: Pf]
+	[Loop,1,
+		[If,([IModGet,Transform: Pf]==0), // if Nothing
+			[IModSet,Transform: Pf,1] // apply just Line
+			[LoopExit]
+		]
+		[If,([IModGet,Transform: Pf]==1), // if just Line
+			[IModSet,Transform: Pf,2] // apply just Fill
+			[LoopExit]
+		]
+		[If,([IModGet,Transform: Pf]==2), // if just Fill
+			[IModSet,Transform: Pf,3] // apply Line & Fill
+			[LoopExit]
+		]
+		[If,([IModGet,Transform: Pf]==3), // if Line & Fill
+			[IModSet,Transform: Pf,0] // apply Nothing
+			[LoopExit]
+		]
+	]    		
+,,0.5] // half palette width button
