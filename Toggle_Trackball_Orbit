@@ -1,0 +1,23 @@
+//ZBrush macro - save to ZBrush 2019.1\ZStartup\Macros\Misc\ folder
+//Cristobal Vila - etereaestudios.com - Big thanks to Marcus Civis
+
+[IButton,???,"Toggle Trackball Orbit",
+	[IShowActions,0]
+	[IConfig,2019]
+	[If,([IsEnabled,Transform:Rot XYZ]==1), // if XYZ is enabled (if that button is not greyed and can be turned on/off)
+		[Loop,1,
+			[If,([IGet,Transform:Rot XYZ]==1), // if XYZ is pressed
+				[IPress,Transform:Rot Y] // press Y
+				[LoopExit]
+			]
+			[If,([IGet,Transform:Rot Y]==1), // if Y is pressed
+				[IPress,Transform:Rot XYZ] // press XYZ
+				[LoopExit]
+			]
+			[If,([IGet,Transform:Rot Z]==1), // if Z is pressed (just in case)
+				[IPress,Transform:Rot Y] // press Y
+				[LoopExit]
+			]
+		]   
+	] 		
+,,0.5] // half palette width button
