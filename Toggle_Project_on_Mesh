@@ -1,0 +1,22 @@
+//ZBrush macro - save to ZBrush 2019.1\ZStartup\Macros\Misc\ folder
+//Cristobal Vila - etereaestudios.com
+
+[IButton,???,"Toggle Project on Mesh",
+	[IShowActions,0]
+	[IConfig,2019]
+	[ISet,Draw:PLine Opacity,0] // To avoid XYZ lines appearing around brush
+	[Loop,1,
+		[If,([IGet,Draw:Project On Mesh]==0), // if 0
+			[ISet,Draw:Project On Mesh,1] // apply 1
+			[LoopExit]
+		]
+		[If,([IGet,Draw:Project On Mesh]==1), // if 1
+			[ISet,Draw:Project On Mesh,0] // apply 0
+			[LoopExit]
+		]
+		[If,([IGet,Draw:Project On Mesh]!=0)&&([IGet,Draw:Project On Mesh]!=1), // if any other value
+			[ISet,Draw:Project On Mesh,0] // apply 0
+			[LoopExit]
+		]
+	]    		
+,,1.0] // full palette width button
