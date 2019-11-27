@@ -1,0 +1,21 @@
+//ZBrush macro - save to ZBrush 2019.1\ZStartup\Macros\Misc\ folder
+//Cristobal Vila - etereaestudios.com
+
+[IButton,???,"Toggle E Enhance Factor between 0.75 (Default) and 1.0 (Full Transparent Mesh)",
+	[IShowActions,0]
+	[IConfig,2019]
+	[Loop,1,
+		[If,([IGet,Draw:E Enhance Factor]==0.75), // if Default
+			[ISet,Draw:E Enhance Factor,1] // apply Full Transparent
+			[LoopExit]
+		]
+		[If,([IGet,Draw:E Enhance Factor]==1), // if Full Transparent
+			[ISet,Draw:E Enhance Factor,0.75] // apply Default
+			[LoopExit]
+		]
+		[If,([IGet,Draw:E Enhance Factor]!=0.75)&&([IGet,Draw:E Enhance Factor]!=1), // if any other value
+			[ISet,Draw:E Enhance Factor,0.75] // apply Default
+			[LoopExit]
+		]
+	]    		
+,,1.0] // full palette width button
